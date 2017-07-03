@@ -1,0 +1,20 @@
+<%= form_for @review do |f| %>
+  <div class="field">
+    <%= f.label :review_body %>
+    <%= f.text_field :review_body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :review_rating %>
+    <%= f.select :credit, ((0..5).map {|i| [i,i] } << ["No limit",nil]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_id %>
+    <%= f.collection_select :company_id, Provider.order(:name),:id,:name, include_blank: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
